@@ -1,7 +1,7 @@
 name: Publish Telegram catalog post
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -11,13 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish catalog post to Telegram
+        shell: bash
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           python3 - <<'PY'
           import json, os, urllib.request
 
-          token = os.environ["TELEGRAM_BOT_TOKEN"]
+          token = os.environ.get("TELEGRAM_BOT_TOKEN")
+          if not token:
+              raise SystemExit("TELEGRAM_BOT_TOKEN is missing")
+
           payload = {
               "chat_id": "@MDK_LUXE",
               "text": """✨ <b>MDK LUX | КАТАЛОГ</b>
@@ -44,13 +48,12 @@ jobs:
               headers={"Content-Type": "application/json"},
               method="POST",
           )
-          try:
-              with urllib.request.urlopen(req) as response:
-                  result = json.load(response)
-          except Exception as exc:
-              raise SystemExit(f"Telegram request failed: {exc}")
+
+          with urllib.request.urlopen(req) as response:
+              result = json.load(response)
 
           if not result.get("ok"):
               raise SystemExit(f"Telegram API error: {result}")
+
           print("Catalog post published successfully.")
           PY
