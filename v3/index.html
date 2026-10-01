@@ -81,7 +81,13 @@ footer{text-align:center;background:#171715;color:#d9d2c8;padding:25px 16px;font
 <footer>MDK LUX · КИЇВ · ХАРКІВ · БОРИСПІЛЬ</footer>
 <script>
 const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}
-const products = [];
+const products = [
+  {
+    category:"Шкіряні куртки жіночі",
+    name:"Шкіряна куртка жіноча",
+    image:"assets/leather-jacket-001.svg"
+  }
+];
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.section').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
 function showCategory(category){
   document.getElementById('catalogHome').style.display='none';
