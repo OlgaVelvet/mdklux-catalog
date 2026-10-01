@@ -1,0 +1,56 @@
+name: Publish Telegram catalog post
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish catalog post to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"]
+          payload = {
+              "chat_id": "@MDK_LUXE",
+              "text": """✨ <b>MDK LUX | КАТАЛОГ</b>
+
+Стиль, який завжди поруч.
+
+Переглядайте жіночий та чоловічий верхній одяг, сумки й аксесуари MDK LUX.
+
+Обирайте свою модель у каталозі 👇""",
+              "parse_mode": "HTML",
+              "reply_markup": {
+                  "inline_keyboard": [[
+                      {
+                          "text": "🛍 ВІДКРИТИ КАТАЛОГ",
+                          "url": "https://olgavelvet.github.io/mdklux-catalog/"
+                      }
+                  ]]
+              }
+          }
+
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req) as response:
+                  result = json.load(response)
+          except Exception as exc:
+              raise SystemExit(f"Telegram request failed: {exc}")
+
+          if not result.get("ok"):
+              raise SystemExit(f"Telegram API error: {result}")
+          print("Catalog post published successfully.")
+          PY
