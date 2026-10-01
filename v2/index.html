@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MDK LUX — Каталог</title>
+<script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+<style>
+:root{--bg:#f5f2ec;--card:#fff;--ink:#181715;--muted:#777168;--gold:#a68548;--line:#ded8cf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
+header{padding:28px 20px 18px;text-align:center;background:#171715;color:white;position:sticky;top:0;z-index:3}
+.brand{font-family:Georgia,serif;font-size:27px;letter-spacing:5px}.tag{font-size:11px;letter-spacing:2px;color:#d7c39d;margin-top:7px}
+main{max-width:760px;margin:auto;padding:22px 16px 42px}
+.hero{padding:28px 8px 25px;text-align:center}.hero h1{font-family:Georgia,serif;font-size:30px;font-weight:400;margin:0 0 10px}.hero p{color:var(--muted);line-height:1.5;margin:0}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 22px}.tabs button{border:1px solid var(--line);background:#fff;padding:13px 4px;font-size:12px;letter-spacing:.6px;border-radius:2px}.tabs button.active{background:#171715;color:white;border-color:#171715}
+.section{display:none}.section.active{display:block}.group{margin-bottom:26px}.group h2{font-family:Georgia,serif;font-size:21px;font-weight:400;border-bottom:1px solid var(--line);padding-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.item{background:var(--card);padding:17px 13px;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #ebe6df;cursor:pointer}.item span{font-size:14px;line-height:1.25}.arrow{color:var(--gold);font-size:18px}
+.back{display:none;margin:0 0 18px;border:0;background:none;font-size:14px;padding:0;color:var(--ink);cursor:pointer}
+.products{display:none}.products.active{display:block}.products h2{font-family:Georgia,serif;font-size:24px;font-weight:400;margin:0 0 16px}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.product-card{background:white;border:1px solid #ebe6df}.product-card img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#eee}.product-info{padding:12px}.product-title{font-size:14px;font-weight:600;margin-bottom:6px}.product-meta{font-size:12px;color:var(--muted);line-height:1.45}.empty{background:white;border:1px solid #ebe6df;padding:28px 20px;text-align:center;color:var(--muted);line-height:1.6}
+.note{text-align:center;color:var(--muted);font-size:12px;line-height:1.5;margin-top:30px}
+footer{text-align:center;background:#171715;color:#d9d2c8;padding:25px 16px;font-size:12px;letter-spacing:.5px}
+@media(max-width:380px){.grid,.product-grid{grid-template-columns:1fr}.tabs button{font-size:11px}.hero h1{font-size:26px}}
+</style></head>
+<body><header><div class="brand">MDK LUX</div><div class="tag">СТИЛЬ ПОЗА ЧАСОМ</div></header>
+<main>
+<div id="catalogHome">
+<div class="hero"><h1>Каталог колекцій</h1><p>Обирайте категорію та переглядайте моделі MDK LUX без переходу на зовнішній сайт.</p></div>
+<div class="tabs"><button class="active" data-tab="women">ЖІНКАМ</button><button data-tab="men">ЧОЛОВІКАМ</button><button data-tab="acc">АКСЕСУАРИ</button></div>
+
+<section id="women" class="section active"><div class="group"><h2>Верхній жіночий одяг</h2><div class="grid">
+<div class="item" data-category="Куртки жіночі"><span>Куртки жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шкіряні куртки жіночі"><span>Шкіряні куртки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шкіряні пуховики жіночі"><span>Шкіряні пуховики</span><b class="arrow">›</b></div>
+<div class="item" data-category="Дублянки жіночі"><span>Дублянки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шуби жіночі"><span>Шуби</span><b class="arrow">›</b></div>
+<div class="item" data-category="Хутряні жилети жіночі"><span>Хутряні жилети</span><b class="arrow">›</b></div>
+<div class="item" data-category="Пальта жіночі"><span>Пальта</span><b class="arrow">›</b></div>
+<div class="item" data-category="Пуховики жіночі"><span>Пуховики</span><b class="arrow">›</b></div>
+<div class="item" data-category="Парки з хутром жіночі"><span>Парки з хутром</span><b class="arrow">›</b></div>
+<div class="item" data-category="Жилети з тканини жіночі"><span>Жилети з тканини</span><b class="arrow">›</b></div>
+</div></div></section>
+
+<section id="men" class="section"><div class="group"><h2>Верхній чоловічий одяг</h2><div class="grid">
+<div class="item" data-category="Шкіряні куртки чоловічі"><span>Шкіряні куртки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шкіряні пуховики чоловічі"><span>Шкіряні пуховики</span><b class="arrow">›</b></div>
+<div class="item" data-category="Дублянки чоловічі"><span>Дублянки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Куртки чоловічі"><span>Куртки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Пальта чоловічі"><span>Пальта</span><b class="arrow">›</b></div>
+<div class="item" data-category="Парки з хутром чоловічі"><span>Парки з хутром</span><b class="arrow">›</b></div>
+<div class="item" data-category="Пуховики чоловічі"><span>Пуховики</span><b class="arrow">›</b></div>
+<div class="item" data-category="Жилети з тканини чоловічі"><span>Жилети з тканини</span><b class="arrow">›</b></div>
+</div></div></section>
+
+<section id="acc" class="section"><div class="group"><h2>Аксесуари</h2><div class="grid">
+<div class="item" data-category="Сумки жіночі"><span>Сумки жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Сумки чоловічі"><span>Сумки чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Гаманці жіночі"><span>Гаманці жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Портмоне чоловічі"><span>Портмоне чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Ремені жіночі"><span>Ремені жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Ремені чоловічі"><span>Ремені чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Рукавички жіночі"><span>Рукавички жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Рукавички чоловічі"><span>Рукавички чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шапки жіночі"><span>Шапки жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шапки чоловічі"><span>Шапки чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шарфи жіночі"><span>Шарфи жіночі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Шарфи чоловічі"><span>Шарфи чоловічі</span><b class="arrow">›</b></div>
+<div class="item" data-category="Парасольки"><span>Парасольки</span><b class="arrow">›</b></div>
+<div class="item" data-category="Косметички жіночі"><span>Косметички жіночі</span><b class="arrow">›</b></div>
+</div></div></section>
+</div>
+
+<div id="productsView" class="products">
+<button class="back" id="backBtn">← Назад до категорій</button>
+<h2 id="categoryTitle"></h2>
+<div id="productGrid" class="product-grid"></div>
+<div id="emptyState" class="empty">У цій категорії поки немає моделей. Тут будуть тільки товари, які ви самі вирішите додати до каталогу MDK LUX.</div>
+</div>
+
+<div class="note">Ціни не відображаються. У каталозі показуємо тільки відібрані вами моделі.</div>
+</main>
+<footer>MDK LUX · КИЇВ · ХАРКІВ · БОРИСПІЛ</footer>
+<script>
+const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}
+const products = [];
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.section').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
+function showCategory(category){
+  document.getElementById('catalogHome').style.display='none';
+  document.getElementById('productsView').classList.add('active');
+  document.getElementById('backBtn').style.display='inline-block';
+  document.getElementById('categoryTitle').textContent=category;
+  const list=products.filter(p=>p.category===category);
+  const grid=document.getElementById('productGrid');
+  grid.innerHTML='';
+  document.getElementById('emptyState').style.display=list.length?'none':'block';
+  list.forEach(p=>{
+    const el=document.createElement('div');el.className='product-card';
+    el.innerHTML='<img src="'+p.image+'" alt=""><div class="product-info"><div class="product-title">'+p.name+'</div><div class="product-meta">'+(p.article?'Артикул: '+p.article+'<br>':'')+(p.sizes?'Розміри: '+p.sizes:'')+'</div></div>';
+    grid.appendChild(el);
+  })
+}
+document.querySelectorAll('.item').forEach(i=>i.onclick=()=>showCategory(i.dataset.category));
+document.getElementById('backBtn').onclick=()=>{document.getElementById('productsView').classList.remove('active');document.getElementById('catalogHome').style.display='block'};
+</script></body></html>
