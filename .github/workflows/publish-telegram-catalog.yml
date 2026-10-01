@@ -1,59 +1,27 @@
 name: Publish Telegram catalog post
 
 on:
-  workflow_dispatch: {}
-
-permissions:
-  contents: read
+  workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Publish catalog post to Telegram
-        shell: bash
+      - name: Send Telegram post
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
-          python3 - <<'PY'
-          import json, os, urllib.request
-
-          token = os.environ.get("TELEGRAM_BOT_TOKEN")
-          if not token:
-              raise SystemExit("TELEGRAM_BOT_TOKEN is missing")
-
-          payload = {
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d '{
               "chat_id": "@MDK_LUXE",
-              "text": """✨ <b>MDK LUX | КАТАЛОГ</b>
-
-Стиль, який завжди поруч.
-
-Переглядайте жіночий та чоловічий верхній одяг, сумки й аксесуари MDK LUX.
-
-Обирайте свою модель у каталозі 👇""",
-              "parse_mode": "HTML",
+              "text": "✨ MDK LUX | КАТАЛОГ\n\nСтиль, який завжди поруч.\n\nПереглядайте жіночий та чоловічий верхній одяг, сумки й аксесуари MDK LUX.\n\nОбирайте свою модель у каталозі 👇",
               "reply_markup": {
-                  "inline_keyboard": [[
-                      {
-                          "text": "🛍 ВІДКРИТИ КАТАЛОГ",
-                          "url": "https://olgavelvet.github.io/mdklux-catalog/"
-                      }
-                  ]]
+                "inline_keyboard": [[
+                  {
+                    "text": "🛍 ВІДКРИТИ КАТАЛОГ",
+                    "url": "https://olgavelvet.github.io/mdklux-catalog/"
+                  }
+                ]]
               }
-          }
-
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=json.dumps(payload).encode("utf-8"),
-              headers={"Content-Type": "application/json"},
-              method="POST",
-          )
-
-          with urllib.request.urlopen(req) as response:
-              result = json.load(response)
-
-          if not result.get("ok"):
-              raise SystemExit(f"Telegram API error: {result}")
-
-          print("Catalog post published successfully.")
-          PY
+            }'
