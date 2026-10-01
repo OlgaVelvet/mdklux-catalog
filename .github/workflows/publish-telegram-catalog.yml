@@ -11,7 +11,13 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
-          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          TOKEN="$(printf '%s' "$TELEGRAM_BOT_TOKEN" | grep -Eo '[0-9]{6,}:[A-Za-z0-9_-]{20,}' | head -n1)"
+          if [ -z "$TOKEN" ]; then
+            echo "Bot token format is invalid. Please replace TELEGRAM_BOT_TOKEN with the token from BotFather."
+            exit 1
+          fi
+
+          curl --fail-with-body -sS -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
             -H "Content-Type: application/json" \
             -d '{
               "chat_id": "@MDK_LUXE",
