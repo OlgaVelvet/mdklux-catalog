@@ -99,7 +99,8 @@ const products = [
   },
   {
     category:"Шкіряні куртки жіночі",
-    name:"Шкіряна куртка жіноча",
+    name:"Шкіряна куртка жіноча з хутром чорнобурки",
+    article:"3XA",
     image:"2026-10-05%2012.37.50.jpg"
   }
 ];
@@ -115,7 +116,7 @@ function showCategory(category){
   document.getElementById('emptyState').style.display=list.length?'none':'block';
   list.forEach(p=>{
     const el=document.createElement('div');el.className='product-card';
-    el.innerHTML='<img src="'+p.image+'" alt=""><div class="product-info"><div class="product-title">'+p.name+'</div><div class="product-meta">'+(p.article?'Артикул: '+p.article+'<br>':'')+(p.sizes?'Розміри: '+p.sizes:'')+'</div></div>';
+    el.innerHTML='<img src="'+p.image+'" alt=""><div class="product-info"><div class="product-title">'+p.name+'</div><div class="product-meta">'+(p.article?'Артикул: '+p.article:'')+'</div></div>';
     grid.appendChild(el);
   })
 }
