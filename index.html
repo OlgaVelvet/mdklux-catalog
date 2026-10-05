@@ -84,13 +84,12 @@ const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}
 const products = [
   {
     category:"Шкіряні куртки жіночі",
-    name:"Шкіряна куртка жіноча",
+    name:"",
     image:"2026-10-05%2012.27.38.jpg"
   },
   {
     category:"Шкіряні куртки жіночі",
-    name:"",
-    badge:"Модель 3XA",
+    name:"Модель 3XA",
     image:"2026-10-05%2012.37.50.jpg"
   }
 ];
@@ -106,7 +105,7 @@ function showCategory(category){
   document.getElementById('emptyState').style.display=list.length?'none':'block';
   list.forEach(p=>{
     const el=document.createElement('div');el.className='product-card';
-    el.innerHTML=(p.badge?'<div class="product-badge">'+p.badge+'</div>':'')+'<img src="'+p.image+'" alt="">'+(p.name?'<div class="product-info"><div class="product-title">'+p.name+'</div></div>':'');
+    el.innerHTML='<img src="'+p.image+'" alt="">'+(p.name?'<div class="product-info"><div class="product-title">'+p.name+'</div></div>':'');
     grid.appendChild(el);
   })
 }
