@@ -74,10 +74,10 @@ footer{text-align:center;background:#171715;color:#d9d2c8;padding:25px 16px;font
 <div class="products-head">
 <h2 id="categoryTitle"></h2>
 <div class="gold-line"></div>
-<div id="productCount" class="product-count"></div>
+
 </div>
 <div id="productGrid" class="product-grid"></div>
-<div id="emptyState" class="empty"></div>
+
 </div>
 
 
@@ -112,10 +112,8 @@ function showCategory(category){
   document.getElementById('backBtn').style.display='inline-block';
   document.getElementById('categoryTitle').textContent=category;
   const list=products.filter(p=>p.category===category);
-  document.getElementById('productCount').textContent='';
   const grid=document.getElementById('productGrid');
   grid.innerHTML='';
-  document.getElementById('emptyState').style.display=list.length?'none':'block';
   list.forEach(p=>{
     const el=document.createElement('div');el.className='product-card';
     el.innerHTML='<img src="'+p.image+'" alt="">';
